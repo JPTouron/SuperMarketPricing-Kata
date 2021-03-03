@@ -20,6 +20,19 @@ public class MoneyTests
     }
 
     [Fact]
+    public void WhenCreatedOffAnExistingMoney_RetainsAllPropertiesButTheAmount()
+    {
+        Currency cur1 = repo.Get("BTC");
+        var newAmount = 4.065m;
+        Money m1 = new Money(1.08m, repo.Get("BTC"));
+        Money m2 = new Money(m1, newAmount);
+
+
+        Assert.Equal<Currency>(m1.Currency, m2.Currency);
+        Assert.Equal(newAmount, m2.Amount);
+    }
+
+    [Fact]
     public void CurrencyIsNotEqual()
     {
         Currency cur1 = repo.Get("HKD");
@@ -85,8 +98,8 @@ public class MoneyTests
     {
         Money m1 = new Money(1.00000001m, repo.Get("BTC"));
 
-        Money result = m1 - 10.000000019m;
-        Assert.Equal(-9.000000009m, result.Amount);
+        Money result = m1 - 0.000000019m;
+        Assert.Equal(0.999999991m, result.Amount);
     }
 
     [Fact]

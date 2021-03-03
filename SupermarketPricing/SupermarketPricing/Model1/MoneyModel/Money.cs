@@ -12,8 +12,18 @@ namespace SupermarketPricing.Model1.MoneyModel
         public Money(decimal amount, Currency currency)
         {
             AssertNotNull(currency);
+            AssertPositiveAmount(amount);
             Amount = amount;
             Currency = currency;
+        }
+
+        public Money(Money money, decimal amount)
+        {
+            AssertNotNull(money);
+            AssertPositiveAmount(amount);
+
+            Amount = amount;
+            Currency = money.Currency;
         }
 
         public decimal Amount { get; private set; }

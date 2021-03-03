@@ -5,14 +5,16 @@ using SupermarketPricing.Model1.MoneyModel;
 
 namespace SupermarketPricing.Model1
 {
+    public interface IStockableProduct
+    {
+        public int Quantity { get; }
+    }
 
     public interface ISellableProduct
     {
         public Money Cost { get; }
 
-        public string ProductName { get; set; }
-
-        public int Quantity { get; set; }
+        public string ProductName { get; }
     }
 
     /// <summary>
@@ -20,7 +22,12 @@ namespace SupermarketPricing.Model1
     /// </summary>
     public interface IDiscountableProduct
     {
-        public decimal Discount { get; }
+
+        /// <summary>
+        /// percentage discounted
+        /// </summary>
+        public decimal DiscountPercentage { get; }
+
     }
 
     /// <summary>
