@@ -1,0 +1,49 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Aggregates\**" />
+    <EmbeddedResource Remove="Aggregates\**" />
+    <None Remove="Aggregates\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="NoStockProductTests.cs" />
+    <Compile Remove="StockProductTests.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Aggregates\PurchaseOrderTests.cs" />
+    <Compile Include="Aggregates\StorageTests.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoFixture.AutoMoq" Version="4.15.0" />
+    <PackageReference Include="AutoFixture.Xunit2" Version="4.15.0" />
+    <PackageReference Include="coverlet.msbuild" Version="3.0.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.9.1" />
+    <PackageReference Include="System.ComponentModel.TypeConverter" Version="4.3.0" />
+    <PackageReference Include="xunit" Version="2.4.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="coverlet.collector" Version="3.0.3">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SupermarketPricing.Domain\SupermarketPricing.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

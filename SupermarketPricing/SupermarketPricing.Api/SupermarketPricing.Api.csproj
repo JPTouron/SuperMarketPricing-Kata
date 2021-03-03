@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Model1\Core\**" />
+    <EmbeddedResource Remove="Model1\Core\**" />
+    <None Remove="Model1\Core\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Ardalis.GuardClauses" Version="3.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SupermarketPricing.Domain\SupermarketPricing.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

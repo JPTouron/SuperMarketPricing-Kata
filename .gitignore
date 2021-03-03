@@ -266,3 +266,5 @@ paket-files/
 
 # coverlet
 **/coverage.json
+coverage.cobertura.xml
+SupermarketPricing/Code Coverage/*

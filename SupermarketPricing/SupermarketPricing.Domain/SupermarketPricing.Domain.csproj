@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="DiscountRules\**" />
+    <EmbeddedResource Remove="DiscountRules\**" />
+    <None Remove="DiscountRules\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SuperMarketPricing.Domain.BuildingBlocks\SuperMarketPricing.Domain.BuildingBlocks.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Ardalis.GuardClauses" Version="3.1.0" />
+  </ItemGroup>
+
+</Project>

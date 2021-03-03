@@ -1,0 +1,75 @@
+@startuml
+
+title SuperMarketPricing Kata - Class Diagram (https://www.planttext.com)
+
+package Domain  {
+
+
+    frame PurchaseModule  {
+
+        component [Purchase] as P
+
+        interface IDiscountApplier
+        interface IPurchaseItem
+        interface IPurchaseOrder
+
+        P -- IDiscountApplier
+        P -- IPurchaseItem
+        P -- IPurchaseOrder
+    }
+
+    frame StockModule  {
+
+        component [Stock] as S
+
+        interface IStorage
+
+        S -right- IStorage
+
+    }
+
+}
+package SuperMarketPricingApi {
+
+    component [DiscountApplier]
+
+    IDiscountApplier )-- DiscountApplier
+
+    component [Discounts]{
+
+        component [DiscountRule] as DR
+        component [DiscountDescriptor] as DD
+
+        DR --> DD
+    }
+
+    component [DiscountRulesRepository] as DRR
+    DRR --> DR
+    IPurchaseItem )-- DR
+
+    frame  SuperMarket {
+
+        component [SuperMarketApi] as SM
+        interface ISuperMarketApi
+        SM -- ISuperMarketApi
+        DiscountApplier <-left- SM
+        IStorage <-- SM
+        IPurchaseOrder <-- SM
+
+    }
+
+    SM --> DRR
+
+
+
+}
+
+package SuperMarketPricingClient{
+
+    component [Program] as PC
+    ISuperMarketApi <-down- PC
+
+
+}
+
+@enduml

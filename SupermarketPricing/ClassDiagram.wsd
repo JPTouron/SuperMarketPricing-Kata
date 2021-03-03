@@ -1,0 +1,91 @@
+@startuml
+
+title SuperMarketPricing Kata - Class Diagram
+
+package Domain  {
+
+    package PurchaseModule <<Frame>> {
+
+
+
+        component [Purchase]  {
+
+            interface IPurchaseOrder
+            {
+                +Currency Currency
+                +IReadOnlyList<IPurchaseItem> GetList
+                +Money TotalCost
+                ....
+                +void AddItemToOrder(string productName, int quantity)
+            }
+
+            interface IPurchaseItem
+            {
+                +Money ProductCost
+                +string ProductName
+                +int Quantity
+            }
+
+            interface IDiscountApplier
+            {
+                +IPurchaseItem ApplyDiscount(IPurchaseItem item)
+            }
+            IDiscountApplier ()- Car
+
+            class PurchaseItem{
+                -   ISellableProduct product
+
+            }
+
+            IPurchaseItem <|-down- PurchaseItem
+
+            note left
+                "" ProductName = product.name ""
+                "" ProductCost = product.cost""
+            end note
+
+            class PurchaseOrder << AggregateRoot >>{
+                
+                -class PurchaseItem
+                ....
+                -IDiscountApplier discountApplier
+                -IStorage storage
+                -IList<IPurchaseItem> items
+
+            }
+
+            note right
+                <b>PurchaseItem class</b>
+                Is a an internal class of PurchaseOrder
+                And is diclared private so it has no visibility from outside
+            end note
+
+            IPurchaseOrder <|-down- PurchaseOrder
+            PurchaseItem <-right- PurchaseOrder
+
+        }
+
+        package Stock <<Node>> {
+
+            interface IStorage
+            {
+                +void AddProductToStorage(ISellableProduct product, int initialQuantity)
+                +Maybe<ISellableProduct> GetProduct(string name, int quantity)
+            }
+
+            class Storage << AggregateRoot >>{
+                -IList<IStockableProduct> products
+            }
+            IStorage <|-down- Storage
+
+        }
+
+        package SharedKernel <<Node>> {
+        }
+
+
+
+    }
+}
+
+@enduml

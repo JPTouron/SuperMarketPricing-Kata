@@ -1,0 +1,80 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31005.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00.Solution Items", "00.Solution Items", "{06C63084-0767-41A2-B373-9512A7E9B515}"
+	ProjectSection(SolutionItems) = preProject
+		..\README.md = ..\README.md
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperMarketPricing.Domain.BuildingBlocks", "SuperMarketPricing.Domain.BuildingBlocks\SuperMarketPricing.Domain.BuildingBlocks.csproj", "{60A74069-EA0B-42BD-B509-01EAE3D0A171}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03.SM App", "03.SM App", "{A0970827-DC3E-4F08-A067-6C2A7DFBE9CA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02.Domain", "02.Domain", "{6FDC45FE-3755-48AE-B6C7-18A862BFD490}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SupermarketPricing.Domain", "SupermarketPricing.Domain\SupermarketPricing.Domain.csproj", "{726E988B-1C21-4221-A9B4-BCDBF20ADC6C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SupermarketPricing.Api", "SupermarketPricing.Api\SupermarketPricing.Api.csproj", "{35AFC46D-41F9-4A06-A155-7645BFD73C8D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SupermarketPricing.Client", "SupermarketPricing.Client\SupermarketPricing.Client.csproj", "{4CADF56D-48DE-4EA2-B67D-56A329DAEA39}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01.Domain Building Blocks", "01.Domain Building Blocks", "{C857E6B1-39F7-4003-BB88-8CE348C44960}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SuperMarketPricing.Domain.BuildingBlocks.Tests", "SuperMarketPricing.Domain.BuildingBlocks.Tests\SuperMarketPricing.Domain.BuildingBlocks.Tests.csproj", "{FFDE5464-C593-4F40-8E2F-8945B511D921}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SupermarketPricing.Domain.Tests", "SupermarketPricing.Domain.Tests\SupermarketPricing.Domain.Tests.csproj", "{320B4B3F-5E2B-4724-81B3-3A6974618D83}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SupermarketPricing.Api.Tests", "SupermarketPricing.Api.Tests\SupermarketPricing.Api.Tests.csproj", "{F60A321A-56FF-4EC2-B019-F877BE0FC3CF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{60A74069-EA0B-42BD-B509-01EAE3D0A171}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60A74069-EA0B-42BD-B509-01EAE3D0A171}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60A74069-EA0B-42BD-B509-01EAE3D0A171}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60A74069-EA0B-42BD-B509-01EAE3D0A171}.Release|Any CPU.Build.0 = Release|Any CPU
+		{726E988B-1C21-4221-A9B4-BCDBF20ADC6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{726E988B-1C21-4221-A9B4-BCDBF20ADC6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{726E988B-1C21-4221-A9B4-BCDBF20ADC6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{726E988B-1C21-4221-A9B4-BCDBF20ADC6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35AFC46D-41F9-4A06-A155-7645BFD73C8D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35AFC46D-41F9-4A06-A155-7645BFD73C8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35AFC46D-41F9-4A06-A155-7645BFD73C8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35AFC46D-41F9-4A06-A155-7645BFD73C8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CADF56D-48DE-4EA2-B67D-56A329DAEA39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CADF56D-48DE-4EA2-B67D-56A329DAEA39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CADF56D-48DE-4EA2-B67D-56A329DAEA39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CADF56D-48DE-4EA2-B67D-56A329DAEA39}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFDE5464-C593-4F40-8E2F-8945B511D921}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFDE5464-C593-4F40-8E2F-8945B511D921}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFDE5464-C593-4F40-8E2F-8945B511D921}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFDE5464-C593-4F40-8E2F-8945B511D921}.Release|Any CPU.Build.0 = Release|Any CPU
+		{320B4B3F-5E2B-4724-81B3-3A6974618D83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{320B4B3F-5E2B-4724-81B3-3A6974618D83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{320B4B3F-5E2B-4724-81B3-3A6974618D83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{320B4B3F-5E2B-4724-81B3-3A6974618D83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F60A321A-56FF-4EC2-B019-F877BE0FC3CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F60A321A-56FF-4EC2-B019-F877BE0FC3CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F60A321A-56FF-4EC2-B019-F877BE0FC3CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F60A321A-56FF-4EC2-B019-F877BE0FC3CF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{60A74069-EA0B-42BD-B509-01EAE3D0A171} = {C857E6B1-39F7-4003-BB88-8CE348C44960}
+		{726E988B-1C21-4221-A9B4-BCDBF20ADC6C} = {6FDC45FE-3755-48AE-B6C7-18A862BFD490}
+		{35AFC46D-41F9-4A06-A155-7645BFD73C8D} = {A0970827-DC3E-4F08-A067-6C2A7DFBE9CA}
+		{FFDE5464-C593-4F40-8E2F-8945B511D921} = {C857E6B1-39F7-4003-BB88-8CE348C44960}
+		{320B4B3F-5E2B-4724-81B3-3A6974618D83} = {6FDC45FE-3755-48AE-B6C7-18A862BFD490}
+		{F60A321A-56FF-4EC2-B019-F877BE0FC3CF} = {A0970827-DC3E-4F08-A067-6C2A7DFBE9CA}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2AAC0F06-1DC2-4244-91B9-E6AF755EE129}
+	EndGlobalSection
+EndGlobal
