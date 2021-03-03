@@ -1,30 +1,33 @@
 ﻿using AutoFixture;
 using AutoFixture.AutoMoq;
 using Moq;
-using SupermarketPricing.Model1;
 using SupermarketPricing.Model1.MoneyModel;
-using SupermarketPricing.Model1.SuperMarket;
+using SupermarketPricing.Model1.SuperMarket.Contracts;
+using SupermarketPricing.Model1.SuperMarket.Products;
+using SupermarketPricing.Model1.SuperMarket.SaleOffers;
 using System;
 using Xunit;
-using static SupermarketPricing.SuperMarketItems;
+using static SupermarketPricing.Model1.SuperMarket.SaleOffers.DiscountRules;
 
 namespace SupermarketPricingTests
 {
     public class ItemOnSaleTests
     {
         private IFixture fixture;
+        private CurrencyTypeRepository repo;
 
         public ItemOnSaleTests()
         {
             fixture = new Fixture().Customize(new AutoMoqCustomization { ConfigureMembers = true });
+            repo = new CurrencyTypeRepository();
         }
 
         [Fact]
         public void WhenCreated_HoldsADiscountAndAName()
         {
             var discount = 1.0m;
-            var prod = new Bread();
-            var item = new ItemOnSale(prod, discount);
+            var prod = new ProductItem("Bread", new Money(10, repo.Get("USD")));
+            var item = new ItemOnSaleRule(prod.ProductName, discount);
 
             Assert.Equal(discount, item.DiscountPercentage);
             Assert.Equal(prod.ProductName, item.ProductName);
@@ -37,7 +40,8 @@ namespace SupermarketPricingTests
         [InlineData(new object[] { 100.001 })]
         public void WhenCreated_ThrowsIfDiscountIsOutOfRange(decimal discountPercentage)
         {
-            Assert.Throws<ArgumentOutOfRangeException>(() => new ItemOnSale(new Bread(), discountPercentage));
+            var prod = new ProductItem("Bread", new Money(10, repo.Get("USD")));
+            Assert.Throws<ArgumentOutOfRangeException>(() => new ItemOnSaleRule(prod.ProductName, discountPercentage));
         }
 
         [Theory]
@@ -45,7 +49,9 @@ namespace SupermarketPricingTests
         [InlineData(new object[] { 100 })]
         public void WhenCreated_AcceptsValidDiscountValues(decimal discountPercentage)
         {
-            var item = new ItemOnSale(new Bread(), discountPercentage);
+            var prod = new ProductItem("Bread", new Money(10, repo.Get("USD")));
+
+            var item = new ItemOnSaleRule(prod.ProductName, discountPercentage);
             Assert.Equal(discountPercentage, item.DiscountPercentage);
         }
 
@@ -54,25 +60,27 @@ namespace SupermarketPricingTests
         {
             var discount = 1.0m;
 
-            Assert.Throws<ArgumentNullException>(() => new ItemOnSale(null, discount));
+            Assert.Throws<ArgumentNullException>(() => new ItemOnSaleRule(null, discount));
         }
 
-        [Theory]
-        [InlineData(new object[] { 10, 10, 9 })]
-        [InlineData(new object[] { 10, 1, 9.9 })]
-        [InlineData(new object[] { 10, 30, 7 })]
-        public void Cost_CalculateDiscountProperly(decimal originalCost, decimal discount, decimal discountedCost)
-        {
-            var repo = new CurrencyTypeRepository();
 
-            var prodM = fixture.Create<Mock<ISellableProduct>>();
+        //JP: THIS TEST MUST BE DONE FOR CLASS DiscountCalculator, UNCOMMENT AND APPLY
+        //[Theory]
+        //[InlineData(new object[] { 10, 10, 9 })]
+        //[InlineData(new object[] { 10, 1, 9.9 })]
+        //[InlineData(new object[] { 10, 30, 7 })]
+        //public void Cost_CalculateDiscountProperly(decimal originalCost, decimal discount, decimal discountedCost)
+        //{
+        //    var repo = new CurrencyTypeRepository();
 
-            prodM.SetupGet(x => x.Cost).Returns(new Money(originalCost, repo.Get("EUR")));
-            var prod = prodM.Object;
+        //    var prodM = fixture.Create<Mock<ISellableProduct>>();
 
-            var sale = new ItemOnSale(prod, discount);
+        //    prodM.SetupGet(x => x.Cost).Returns(new Money(originalCost, repo.Get("EUR")));
+        //    var prod = prodM.Object;
 
-            Assert.Equal(sale.Cost.Amount, discountedCost);
-        }
+        //    var sale = new ItemOnSaleRule(prod.ProductName, discount);
+
+        //    Assert.Equal(sale..Amount, discountedCost);
+        //}
     }
 }

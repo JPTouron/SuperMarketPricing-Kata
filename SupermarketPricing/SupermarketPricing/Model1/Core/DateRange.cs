@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SupermarketPricing.Model1.DateRangeModel
+namespace SupermarketPricing.Model1.Core
 {
     public class DateRange
     {

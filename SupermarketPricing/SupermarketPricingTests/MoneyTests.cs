@@ -25,7 +25,8 @@ public class MoneyTests
         Currency cur1 = repo.Get("BTC");
         var newAmount = 4.065m;
         Money m1 = new Money(1.08m, repo.Get("BTC"));
-        Money m2 = new Money(m1, newAmount);
+        Money m2 = new Money(newAmount,m1 );
+
 
 
         Assert.Equal<Currency>(m1.Currency, m2.Currency);

@@ -2,7 +2,7 @@
 
 namespace SupermarketPricing.Model1.MoneyModel
 {
-    public sealed partial class Money
+    public partial class Money
     {
         public static void AssertNotNull(Money money)
         {
@@ -11,7 +11,7 @@ namespace SupermarketPricing.Model1.MoneyModel
 
         public static void AssertPositiveAmount(decimal amount)
         {
-            if (amount <= 0)
+            if (amount < 0)
                 throw new ArgumentOutOfRangeException("Amount must be a positive or Zero number");
         }
 

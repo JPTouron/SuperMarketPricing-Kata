@@ -5,7 +5,7 @@ namespace SupermarketPricing.Model1.MoneyModel
     /// <summary>
     /// based on https://github.com/JPTouron/Money (forked from jasonhoi)
     /// </summary>
-    public sealed partial class Money : IEquatable<Money>, IComparable, IComparable<Money>
+    public partial class Money : IEquatable<Money>, IComparable, IComparable<Money>
     {
         public readonly Currency Currency;
 
@@ -17,7 +17,7 @@ namespace SupermarketPricing.Model1.MoneyModel
             Currency = currency;
         }
 
-        public Money(Money money, decimal amount)
+        public Money(decimal amount, Money money)
         {
             AssertNotNull(money);
             AssertPositiveAmount(amount);
@@ -44,6 +44,13 @@ namespace SupermarketPricing.Model1.MoneyModel
         public override string ToString()
         {
             return Currency.ToString(this);
+        }
+    }
+
+    public sealed class NoMoney : Money
+    {
+        public NoMoney() : base(0.0m, "USD".ToCurrency())
+        {
         }
     }
 }

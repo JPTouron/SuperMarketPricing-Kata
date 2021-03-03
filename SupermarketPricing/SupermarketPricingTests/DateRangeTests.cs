@@ -1,5 +1,5 @@
 ﻿using AutoFixture;
-using SupermarketPricing.Model1.DateRangeModel;
+using SupermarketPricing.Model1.Core;
 using System;
 using Xunit;
 

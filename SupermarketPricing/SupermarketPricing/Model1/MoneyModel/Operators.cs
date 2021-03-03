@@ -1,6 +1,6 @@
 ﻿namespace SupermarketPricing.Model1.MoneyModel
 {
-    public sealed partial class Money
+    public partial class Money
     {
         public static bool operator ==(Money left, Money right)
         {
