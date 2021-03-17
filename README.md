@@ -47,11 +47,13 @@ This is an ideal shower-time kata, but be careful. Some of the problems are more
  - [x] Implement Stock management
  - [x] Have your groceries calculated by this thing
  - [x] Implement making a purchase at a register
+ - [x] Implement List totalling considering -> three for a dollar (so what's the price if I buy 4, or 5?)
  - [ ] Implement discounts over a period of time
  - [ ] Implement data loading off some external repo
- - [ ] Implement List totalling considering -> three for a dollar (so what's the price if I buy 4, or 5?)
 
 
  ## Another guys' solutions:
  https://github.com/raddanesh/Kata01
  https://github.com/andymeek/kata01-supermarket-pricing
+
+ ## NOTE: Check this repo's branches for more approaches
