@@ -4,62 +4,59 @@ System Model
 end title
 
 
-'     note as GeneralNote
-'     <b>important basic rules (first-run)</b>
-'     --
-'     - every single item has to have a price
-'     - a bill/ticket has to have at least one item
-'     - all discounts have a start and end date
-'     - an item can NEVER have a price lower or equal to zero (0.0, -1.0, etc)
+    note as GeneralNote
+    <b>important basic rules (first-run)</b>
+    --
+    - every single item has to have a price
+    - a bill/ticket has to have at least one item
+    - all discounts have a start and end date
+    - an item can NEVER have a price lower or equal to zero (0.0, -1.0, etc)
 
 
-'     <b>some playful business rules</b>
-'     --
+    <b>some playful business rules</b>
+    --
 
-'     - in order to sell an item, it has to be in stock (qty >=1)
+    - in order to sell an item, it has to be in stock (qty >=1)
 
-'     - <b>discounts</b> can come in the following forms:
-'     - % off an item's price
-'     - fixed amount off an item's price
-'     - discounts types:
-'     - buy one, get one (BOGO, this could be an x qty of items for the price of y qty of items, ie: buy 1 get 1 free, buy 2 get 1 free, etc)
-'     - volume discount: the more you buy the more you get discounted, this is a % off based on the total amount, up to a maximum amount of items bought
-'     the diff with the above one is that the above one is rather a fixed % over a fixed qty of items
-'     - seasonal discounts (ie: christmas, black friday, etc)
-'     - loyalty discounts (ie: on your X purchase you get Y% off on Z item)
-'     - some discounts may be combined with others depending on the discount type (ie: loyalty + seasonal, but not volume + seasonal, etc)
-'     - discount applicability (creation/update) has to be audited, i should be able to trace when an item was discounted and by how much
+    - <b>discounts</b> can come in the following forms:
+    - % off an item's price
+    - fixed amount off an item's price
+    - discounts types:
+    - buy one, get one (BOGO, this could be an x qty of items for the price of y qty of items, ie: buy 1 get 1 free, buy 2 get 1 free, etc)
+    - volume discount: the more you buy the more you get discounted, this is a % off based on the total amount, up to a maximum amount of items bought
+    the diff with the above one is that the above one is rather a fixed % over a fixed qty of items
+    - seasonal discounts (ie: christmas, black friday, etc)
+    - loyalty discounts (ie: on your X purchase you get Y% off on Z item)
+    - some discounts may be combined with others depending on the discount type (ie: loyalty + seasonal, but not volume + seasonal, etc)
+    - discount applicability (creation/update) has to be audited, i should be able to trace when an item was discounted and by how much
 
-'     - price change (creation/update) has to be audited, i should be able to trace when an item has changed price and by how much
-'     - start and end dates must have 00:00 and 23:59 times respectively (ie: start: 03/03/2023 00:00, end: 03/08/2023 23:59)
+    - price change (creation/update) has to be audited, i should be able to trace when an item has changed price and by how much
+    - start and end dates must have 00:00 and 23:59 times respectively (ie: start: 03/03/2023 00:00, end: 03/08/2023 23:59)
 
-'     - a <b>bill/ticket</b> must have a specific format (TBD the format details)
-'     - should be able to be stored in some sort of storage (ie: database)
+    - a <b>bill/ticket</b> must have a specific format (TBD the format details)
+    - should be able to be stored in some sort of storage (ie: database)
 
-'     - <b>taxes</b>
-'     - a tax is a percentage of the item's price that has been included in the price
-'     - different taxes can be applied to an item
-'     - there will be a base price which represents the raw price of the item
-'     - the tax applied to an item will be listed in the bill/ticket
-'     - if in a bill there are items wich have different taxes, then the bill will group the total price for the items with the same tax and indicate what's the tax percentage applied and base price for the group summarized
+    - <b>taxes</b>
+    - a tax is a percentage of the item's price that has been included in the price
+    - different taxes can be applied to an item
+    - there will be a base price which represents the raw price of the item
+    - the tax applied to an item will be listed in the bill/ticket
+    - if in a bill there are items wich have different taxes, then the bill will group the total price for the items with the same tax and indicate what's the tax percentage applied and base price for the group summarized
 
-'     <b>Ticket sample</b>
-'     --
-'     Item | Qty | SubTotal
-'     A    | 1   |  V€
-'     B    | 3   |  W€
-'     <Type> Discount applied to B: x%
-'     C    | 5   |  X€
-'     D    | 1   |  Y€
-'     <Type> Discount applied to D: x%
-'     E    | 2   |  Z€
+    <b>Ticket sample</b>
+    --
+    Item | Qty | SubTotal
+    A    | 1   |  V€
+    B    | 3   |  W€
+    <Type> Discount applied to B: x%
+    C    | 5   |  X€
+    D    | 1   |  Y€
+    <Type> Discount applied to D: x%
+    E    | 2   |  Z€
 
-'     Total: V+W+X+Y+Z = T€
-'     end note
+    Total: V+W+X+Y+Z = T€
+    end note
 
-'
-'
-'
 
 '.. important items in this model
 '-----------------------------------------
@@ -82,6 +79,7 @@ frame model {
         +Name:string
         +Price:Price
         +ItemType:ItemType
+        +Quantity:int
 
     }
 
@@ -105,26 +103,24 @@ frame model {
         class BogoDiscount {
             +ctor(ticketLine:TicketLine,BogoQtyThreshold:int)
             --
-            +Id
             +Calculate():decimal
         }
 
         class VolumeDiscount {
             +ctor(ticketLine:TicketLine,VolumeDiscountMaxThreshold:int,VolumeDiscountMaxPercentage:decimal)
             --
+            +Calculate():decimal
         }
 
         class SeasonalDiscount {
             +ctor(ticketLine:TicketLine,SeasonalDiscountStartDate:DateTime,SeasonalDiscountEndDate:DateTime)
             --
-            +Id
             +Calculate():decimal
         }
 
         class LoyaltyDiscount {
             +ctor(ticketLine:TicketLine,purchaseCount:int,loyaltyDiscountPercentage:decimal)
             --
-            +Id
             +Calculate():decimal
         }
     }
