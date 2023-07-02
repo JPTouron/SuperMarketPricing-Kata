@@ -1,6 +1,9 @@
-﻿using SupermarketPricing.Model1.MoneyModel;
+﻿using SupermarketPricing.BuildingBlocks.MoneyModel;
 using System;
 
+
+
+namespace SupermarketPricing.BuildingBlocks.MoneyModel.CurrencyModel;
 public class Currency : IEquatable<Currency>
 {
     /// <summary>

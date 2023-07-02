@@ -1,5 +1,8 @@
-using SupermarketPricing.Model1.MoneyModel;
+using SupermarketPricing.BuildingBlocks.MoneyModel;
+using SupermarketPricing.BuildingBlocks.MoneyModel.CurrencyModel;
 using Xunit;
+
+namespace SupermarketPricingTests.BuildingBlocks;
 
 public class MoneyTests
 {

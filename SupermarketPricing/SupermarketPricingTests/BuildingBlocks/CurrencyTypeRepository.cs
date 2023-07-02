@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using SupermarketPricing.BuildingBlocks.MoneyModel.CurrencyModel;
+using System.Collections.Generic;
+
+namespace SupermarketPricingTests.BuildingBlocks;
 
 public class CurrencyTypeRepository
 {
