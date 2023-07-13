@@ -64,6 +64,8 @@ This is an ideal shower-time kata, but be careful. Some of the problems are more
          - the tax applied to an item will be listed in the bill/ticket
              - if in a bill there are items wich have different taxes, then the bill will group the total price for the items with the same tax and indicate what's the tax percentage applied and base price for the group summarized
 
+## Figma:
+- https://www.figma.com/file/OjKWVBkQ3aUIdVMXIuYUus/Event-Storming-(Community)?type=design&node-id=105-4542&mode=design&t=15UHd8UOWYAJNQxK-0
 
 ## Objectives status
 
