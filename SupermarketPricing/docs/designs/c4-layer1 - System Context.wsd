@@ -3,29 +3,66 @@ title
 System Context Diagram
 end title
 
-note as GeneralNote
-based off C4Model https://c4model.com/
 
-Levels Cheatsheet:
-- System Context: 
-    the big picture showing your system and whatever other systems and users it interacts with, actors, roles, personas, etc
+'.. based off C4Model https://c4model.com/
+'.. 
+'.. Levels Cheatsheet:
+'.. - System Context: 
+'..     the big picture showing your system and whatever other systems and users it interacts with, actors, roles, personas, etc
+'.. 
+'.. - Container: 
+'..     A container is something that needs to be running in order for the overall software system to work. 
+'..     A container is essentially a context or boundary inside which some code is executed or some data is stored. 
+'..     And each container is a separately deployable/runnable thing or runtime environment
+'.. 
+'.. - Component:
+'..     A component is a grouping of related functionality encapsulated behind a well-defined interface
+'..     It's a collection of implementation classes behind an interface
+'..     Aspects such as how those components are packaged (e.g. one component vs many components per JAR file, DLL, shared library, etc) is a separate and orthogonal concern.
+'..     An important point to note here is that all components inside a container typically execute in the same process space. In the C4 model, components are not separately deployable units.
+'.. 
+'.. - Code:
+'..     This is an optional level of detail and is often available on-demand from tooling such as IDEs. 
+'..     Ideally this diagram would be automatically generated using tooling (e.g. an IDE or UML modelling tool),
+'..     and you should consider showing only those attributes and methods that allow you to tell the story that you want to tell. 
+'..     This level of detail is not recommended for anything but the most important or complex components.
 
-- Container: 
-    A container is something that needs to be running in order for the overall software system to work. 
-    A container is essentially a context or boundary inside which some code is executed or some data is stored. 
-    And each container is a separately deployable/runnable thing or runtime environment
 
-- Component:
-    A component is a grouping of related functionality encapsulated behind a well-defined interface
-    It's a collection of implementation classes behind an interface
-    Aspects such as how those components are packaged (e.g. one component vs many components per JAR file, DLL, shared library, etc) is a separate and orthogonal concern.
-    An important point to note here is that all components inside a container typically execute in the same process space. In the C4 model, components are not separately deployable units.
 
-- Code:
-    This is an optional level of detail and is often available on-demand from tooling such as IDEs. 
-    Ideally this diagram would be automatically generated using tooling (e.g. an IDE or UML modelling tool),
-    and you should consider showing only those attributes and methods that allow you to tell the story that you want to tell. 
-    This level of detail is not recommended for anything but the most important or complex components.
 
+Actor CustomerUser
+Actor CashierUser
+Actor StockManagerUser
+Actor SalesUser
+Rectangle System #Yellow
+CustomerUser -up->  System 
+CashierUser -down->  System
+StockManagerUser -right->  System
+SalesUser -left->  System 
+
+note right of SalesUser
+The Sales User will
+- configure the **DISCOUNTS** for the different **SUPERMARKET BRANCHES** in the system 
 end note
+note left of StockManagerUser
+The Stock Manager will be in charge of 
+- buying new **PRODUCTS** from different **PROVIDERS**
+and managing quantities of the existing **PRODUCTS** 
+in the system
+- dispatching **PURCHASING ORDERS** for the different **SUPERMARKET BRANCHES**
+- managing **STOCK** quantities through all the **SUPERMARKET BRANCHES**
+end note
+note bottom of CustomerUser
+The Customer User will:
+- be able to select an **AVAILABLE PRODUCT** from in the **SUPERMARKET BRANCH**
+- be able to fill in a **BASKET** with **PRODUCTS** specifying the quantities per each **PRODUCT**
+- be able to make a **PURCHASE** for the total of **PRODUCTS** in the **BASKET**
+- receive a **BILL** for the **PURCHASE**
+end note
+note top of CashierUser
+The Cashier User will be:
+- processing customer **PURCHASES** for the contents of their **BASKET**
+- give the customer their **BILL** for the **PURCHASE**
+end note
+
 
