@@ -27,9 +27,6 @@ end title
 '..     and you should consider showing only those attributes and methods that allow you to tell the story that you want to tell. 
 '..     This level of detail is not recommended for anything but the most important or complex components.
 
-
-
-
 Actor CustomerUser
 Actor CashierUser
 Actor StockManagerUser
@@ -66,3 +63,4 @@ The Cashier User will be:
 end note
 
 
+@enduml
